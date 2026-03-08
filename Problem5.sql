@@ -1,10 +1,10 @@
 SELECT 
     date,
-    COUNT(DISTINCT CASE WHEN has_view THEN user_client_id END) AS view_users,
-    COUNT(DISTINCT CASE WHEN has_click THEN user_client_id END) AS click_users,
-    COUNT(DISTINCT CASE WHEN has_view AND has_click THEN user_client_id END) AS both_users,
-    ROUND(100.0 * COUNT(DISTINCT CASE WHEN has_view AND has_click THEN user_client_id END) / 
-          NULLIF(COUNT(DISTINCT CASE WHEN has_view THEN user_client_id END), 0), 2) AS conversion_rate_percent
+    COUNT(DISTINCT CASE WHEN has_view = 1 THEN user_client_id END) AS view_users,
+    COUNT(DISTINCT CASE WHEN has_click = 1 THEN user_client_id END) AS click_users,
+    COUNT(DISTINCT CASE WHEN has_view = 1 AND has_click = 1 THEN user_client_id END) AS both_users,
+    ROUND(100.0 * COUNT(DISTINCT CASE WHEN has_view = 1 AND has_click = 1 THEN user_client_id END) / 
+          NULLIF(COUNT(DISTINCT CASE WHEN has_view = 1 THEN user_client_id END), 0), 2) AS conversion_rate_percent
 FROM (
     SELECT 
         user_client_id,
