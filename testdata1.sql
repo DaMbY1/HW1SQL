@@ -1,15 +1,15 @@
 -- Создание таблиц с поддержкой кириллицы
 CREATE TABLE employer (
     employer_id INTEGER PRIMARY KEY,
-    name VARCHAR(100) CHARACTER SET utf8mb4
-) DEFAULT CHARSET=utf8mb4;
+    name VARCHAR(100)
+);
 
 CREATE TABLE vacancy (
     vacancy_id INTEGER PRIMARY KEY,
     active BOOLEAN,
     employer_id INTEGER,
     FOREIGN KEY (employer_id) REFERENCES employer(employer_id)
-) DEFAULT CHARSET=utf8mb4;
+);
 
 -- Заполнение работодателей
 INSERT INTO employer (employer_id, name) VALUES
