@@ -5,7 +5,7 @@ WITH city_model_stats AS (
         COUNT(*) AS orders_count
     FROM orders
     WHERE order_status = TRUE 
-        AND YEAR(created_at) = 2025
+        AND EXTRACT(YEAR FROM created_at)
     GROUP BY city_name, car_model
 ),
 ranked AS (
