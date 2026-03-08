@@ -3,7 +3,7 @@ CREATE TABLE Journal (
     subject VARCHAR(50),
     score INTEGER,
     date DATE
-);
+) DEFAULT CHARSET=utf8mb4;
 INSERT INTO Journal (last_name, subject, score, date) VALUES
 -- Иванов
 ('Иванов', 'Математика', 5, '2023-01-10'),
